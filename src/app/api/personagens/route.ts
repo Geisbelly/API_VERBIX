@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getDbConnection } from '../../../config/dbConfig';
 
-interface params {
-  NOME: string;
-}
+
 
 export async function GET(req: Request) {
   try {
@@ -12,15 +10,10 @@ export async function GET(req: Request) {
     console.log('Parametro NOME:', nome);
 
     const pool = await getDbConnection();
-    let query = 'SELECT * FROM PERSONAGENS';
-    const params: params = { NOME: nome || '' };  // Se 'nome' for nulo, define como string vazia
-
-    if (nome) {
-      query += ' WHERE LOWER(NOME) = LOWER(@NOME)';
-    }
+    let query = 'SELECT * FROM PERSONAGENS WHERE NOME = @nome';
 
     const result = await pool.request()
-      .input('NOME', params.NOME)
+      .input('NOME', nome)
       .query(query);
 
     // Processar os resultados
