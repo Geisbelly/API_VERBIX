@@ -10,19 +10,17 @@ export async function GET(req: Request) {
     console.log('Parametro NOME:', nome);
 
     const pool = await getDbConnection();
-    let query = 'SELECT * FROM PERSONAGENS WHERE NOME = @nome';
+    const query = 'SELECT * FROM PERSONAGENS WHERE NOME = @nome';
 
     const result = await pool.request()
       .input('NOME', nome)
       .query(query);
 
     // Processar os resultados
-    const processedResult = result.recordset.map(item => ({
+    return NextResponse.json(result.recordset.map(item => ({
       ...item,
       IMGS: JSON.parse(item.IMGS.replace(/\\/g, '')) // Tratando imagens no JSON
-    }));
-
-    return NextResponse.json(processedResult);  // Retorna os dados
+    })));  // Retorna os dados
 
   } catch (error) {
     console.error('Erro ao buscar dados:', error);
