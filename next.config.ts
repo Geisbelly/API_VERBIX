@@ -1,4 +1,6 @@
-// next.config.js
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
   
   reactStrictMode: true, // Habilita o modo estrito para identificar problemas no React
@@ -27,7 +29,7 @@ const nextConfig = {
     ]
   },
   trailingSlash: true,
-  
+
 };
 
 
