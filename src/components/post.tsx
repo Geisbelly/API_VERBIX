@@ -10,7 +10,7 @@ const data = {
 async function postCharacter() {
   try {
     // Enviar a requisição POST
-    const response = await fetch('https://api-verbix.vercel.app/api/personagens', {
+    const response = await fetch('http://localhost:3000//api/personagens', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', // Indica que estamos enviando dados em JSON

@@ -10,7 +10,7 @@ const data = {
 async function updateCharacter() {
     try {
       // Enviar a requisição PUT
-      const response = await fetch('https://api-verbix.vercel.app/api/personagens', {
+      const response = await fetch('http://localhost:3000//api/personagens', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json', // Indica que estamos enviando dados em JSON

@@ -7,7 +7,7 @@ const data = {
 async function deleteCharacter() {
   try {
     // Enviar a requisição DELETE
-    const response = await fetch('https://api-verbix.vercel.app/api/personagens', {
+    const response = await fetch('http://localhost:3000//api/personagens', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json', // Indica que estamos enviando dados em JSON

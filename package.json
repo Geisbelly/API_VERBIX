@@ -13,7 +13,7 @@
     "api_verbix": "file:",
     "cors": "^2.8.5",
     "mssql": "^9.3.2",
-    "next": "^15.0.3",
+    "next": "^15.0.4-canary.45",
     "swr": "^2.2.5"
   },
   "devDependencies": {
