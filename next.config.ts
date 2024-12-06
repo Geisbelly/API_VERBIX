@@ -17,7 +17,7 @@ const nextConfig = {
         headers: [
           { key: 'Access-Control-Allow-Credentials', value: 'true' },
           { key: 'Access-Control-Allow-Origin', value: 'https://api-verbix.vercel.app' }, // Certifique-se de que o domínio está correto (inclua o protocolo 'https://')
-          { key: 'Access-Control-Allow-Methods', value: 'GET,POST,PUT,DELETE,OPTIONS' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET , POST , PUT , DELETE , OPTIONS' },
           { key: 'Access-Control-Allow-Headers', value: 'X-Requested-With, Content-Type, Authorization' },
         ],
       },

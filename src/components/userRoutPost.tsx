@@ -1,15 +1,16 @@
 // Dados a serem enviados no corpo da requisição
 const data = {
-  title: 'Teste Conquista',
+  nome: 'Amanda',
+  tipo:'Princesa',
   descricao: 'Descrição da nova conquista',
-  meta: 100
+  imgs: 'https:'
 };
 
 // Função para fazer o POST para o endpoint
 async function createConquista() {
   try {
     // Enviar a requisição POST
-    const response = await fetch('https://api-verbix.vercel.app/api/conquistas', {
+    const response = await fetch('https://api-verbix.vercel.app/api/personagens', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', // Indica que estamos enviando dados em JSON
