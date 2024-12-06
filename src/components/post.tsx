@@ -1,4 +1,4 @@
-// Dados a serem enviados no corpo da requisição
+// OK
 const data = {
   nome: 'Amanda',
   tipo:'Princesa',
@@ -7,7 +7,7 @@ const data = {
 };
 
 // Função para fazer o POST para o endpoint
-async function createConquista() {
+async function postCharacter() {
   try {
     // Enviar a requisição POST
     const response = await fetch('https://api-verbix.vercel.app/api/personagens', {
@@ -35,4 +35,4 @@ async function createConquista() {
   }
 }
 
-export default createConquista;
+export default postCharacter;
