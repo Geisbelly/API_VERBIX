@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getDbConnection } from '../../../config/dbConfig';
 
-// Função auxiliar para manipular a conexão ao banco
 async function executeQuery(query: string, inputs = {}) {
   const pool = await getDbConnection();
   const request = pool.request();
@@ -9,7 +8,25 @@ async function executeQuery(query: string, inputs = {}) {
   return request.query(query);
 }
 
-export async function GET(req: Request) {
+// Função centralizada para tratar as requisições
+export async function handler(req: Request) {
+  const { method } = req;
+
+  switch (method) {
+    case 'GET':
+      return await handleGET(req);
+    case 'POST':
+      return await handlePOST(req);
+    case 'PUT':
+      return await handlePUT(req);
+    case 'DELETE':
+      return await handleDELETE(req);
+    default:
+      return NextResponse.json({ error: 'Método não permitido' }, { status: 405 });
+  }
+}
+
+async function handleGET(req: Request) {
   try {
     const url = new URL(req.url);
     const nome = url.searchParams.get('nome');
@@ -32,7 +49,7 @@ export async function GET(req: Request) {
   }
 }
 
-export async function POST(req: Request) {
+async function handlePOST(req: Request) {
   try {
     const { nome, tipo, descricao, imgs } = await req.json();
 
@@ -55,7 +72,7 @@ export async function POST(req: Request) {
   }
 }
 
-export async function PUT(req: Request) {
+async function handlePUT(req: Request) {
   try {
     const { nome, tipo, descricao, imgs } = await req.json();
 
@@ -83,7 +100,7 @@ export async function PUT(req: Request) {
   }
 }
 
-export async function DELETE(req: Request) {
+async function handleDELETE(req: Request) {
   try {
     const { nome } = await req.json();
 
