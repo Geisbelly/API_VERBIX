@@ -85,12 +85,12 @@ export async function PUT(req: Request) {
 export async function DELETE(req: Request) {
   try {
     const body = await req.json();
-    const { id } = body;
+    const { nome } = body;
 
     const pool = await getDbConnection();
     const result = await pool.request()
-      .input('id', id)
-      .query(`DELETE FROM PERSONAGENS WHERE ID = @id;`);
+      .input('nome', nome)
+      .query(`DELETE FROM PERSONAGENS WHERE NOME = @nome;`);
 
     if (result.rowsAffected[0] === 0) {
       return NextResponse.json({ error: 'Personagem não encontrado' }, { status: 404 });
