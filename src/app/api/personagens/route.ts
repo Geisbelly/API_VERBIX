@@ -2,14 +2,14 @@ import { NextResponse } from 'next/server';
 import { getDbConnection } from '../../../config/dbConfig';
 
 // Função auxiliar para manipular a conexão ao banco
-async function executeQuery(query, inputs = {}) {
+async function executeQuery(query: string, inputs = {}) {
   const pool = await getDbConnection();
   const request = pool.request();
   Object.entries(inputs).forEach(([key, value]) => request.input(key, value));
   return request.query(query);
 }
 
-export async function GET(req) {
+export async function GET(req: Request) {
   try {
     const url = new URL(req.url);
     const nome = url.searchParams.get('nome');
@@ -32,7 +32,7 @@ export async function GET(req) {
   }
 }
 
-export async function POST(req) {
+export async function POST(req: Request) {
   try {
     const { nome, tipo, descricao, imgs } = await req.json();
 
@@ -55,7 +55,7 @@ export async function POST(req) {
   }
 }
 
-export async function PUT(req) {
+export async function PUT(req: Request) {
   try {
     const { nome, tipo, descricao, imgs } = await req.json();
 
@@ -83,7 +83,7 @@ export async function PUT(req) {
   }
 }
 
-export async function DELETE(req) {
+export async function DELETE(req: Request) {
   try {
     const { nome } = await req.json();
 
