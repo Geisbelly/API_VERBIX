@@ -8,7 +8,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "methods": ["POST", "PUT", "DELETE"],
+      "methods": ["POST", "PUT", "DELETE", "GET", "OPTIONS"],
       "dest": "/$1"
     }
   ],
