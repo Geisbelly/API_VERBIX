@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import { getDbConnection } from '../../../config/dbConfig';
 
 
-
 export async function GET(req: Request) {
   try {
     const url = new URL(req.url);
