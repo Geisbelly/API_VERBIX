@@ -56,11 +56,10 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
   try {
     const body = await req.json();
-    const { id, nome, tipo, descricao, imgs } = body;
+    const {nome, tipo, descricao, imgs } = body;
 
     const pool = await getDbConnection();
     const result = await pool.request()
-      .input('id', id)
       .input('nome', nome)
       .input('tipo', tipo)
       .input('descricao', descricao)
@@ -68,7 +67,7 @@ export async function PUT(req: Request) {
       .query(`
         UPDATE PERSONAGENS 
         SET NOME = @nome, TIPO = @tipo, DESCRICAO = @descricao, IMGS = @imgs 
-        WHERE ID = @id;
+        WHERE NOME = @nome;
       `);
 
     if (result.rowsAffected[0] === 0) {
