@@ -7,9 +7,9 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/(.*)",
       "methods": ["GET", "POST", "PUT", "DELETE"],
-      "dest": "/api/$1"
+      "dest": "/$1"
     }
   ],
   "redirects": [
@@ -21,11 +21,11 @@
   ],
   "crons": [
     {
-      "path": "/api/sync-slack-team/T0CAQ10TZ",
+      "path": "/sync-slack-team/T0CAQ10TZ",
       "schedule": "0 5 * * *"
     },
     {
-      "path": "/api/sync-slack-team/T4BOE34OP",
+      "path": "/sync-slack-team/T4BOE34OP",
       "schedule": "0 5 * * *"
     }
   ],
