@@ -33,6 +33,10 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { nome, tipo, descricao, imgs } = body;
 
+    if (!nome || !tipo || !descricao || !imgs) {
+      return NextResponse.json({ error: 'Todos os campos são obrigatórios' }, { status: 400 });
+    }
+
     const pool = await getDbConnection();
     await pool.request()
       .input('nome', nome)
@@ -45,12 +49,12 @@ export async function POST(req: Request) {
       `);
 
     return NextResponse.json({ message: 'Personagem criado com sucesso' }, { status: 201 });
-
   } catch (error) {
     console.error('Erro ao criar personagem:', error);
     return NextResponse.json({ error: 'Erro ao criar personagem' }, { status: 500 });
   }
 }
+
 
 export async function PUT(req: Request) {
   try {
