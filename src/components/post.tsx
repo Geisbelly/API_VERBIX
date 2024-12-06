@@ -3,7 +3,7 @@ const data = {
   nome: 'Amanda',
   tipo:'Princesa',
   descricao: 'Descrição da nova conquista',
-  imgs: 'https:'
+  imgs: '[https:]'
 };
 
 // Função para fazer o POST para o endpoint

@@ -8,25 +8,7 @@ async function executeQuery(query: string, inputs = {}) {
   return request.query(query);
 }
 
-// Função centralizada para tratar as requisições
-export async function handler(req: Request) {
-  const { method } = req;
-
-  switch (method) {
-    case 'GET':
-      return await handleGET(req);
-    case 'POST':
-      return await handlePOST(req);
-    case 'PUT':
-      return await handlePUT(req);
-    case 'DELETE':
-      return await handleDELETE(req);
-    default:
-      return NextResponse.json({ error: 'Método não permitido' }, { status: 405 });
-  }
-}
-
-async function handleGET(req: Request) {
+async function GET(req: Request) {
   try {
     const url = new URL(req.url);
     const nome = url.searchParams.get('nome');
@@ -49,7 +31,7 @@ async function handleGET(req: Request) {
   }
 }
 
-async function handlePOST(req: Request) {
+async function POST(req: Request) {
   try {
     const { nome, tipo, descricao, imgs } = await req.json();
 
@@ -72,7 +54,7 @@ async function handlePOST(req: Request) {
   }
 }
 
-async function handlePUT(req: Request) {
+async function PUT(req: Request) {
   try {
     const { nome, tipo, descricao, imgs } = await req.json();
 
@@ -100,7 +82,7 @@ async function handlePUT(req: Request) {
   }
 }
 
-async function handleDELETE(req: Request) {
+async function DELETE(req: Request) {
   try {
     const { nome } = await req.json();
 
@@ -123,3 +105,5 @@ async function handleDELETE(req: Request) {
     return NextResponse.json({ error: 'Erro ao excluir personagem' }, { status: 500 });
   }
 }
+
+export { GET, POST, PUT, DELETE };

@@ -3,7 +3,7 @@
  */
 const nextConfig = {
   
-  reactStrictMode: true, // Habilita o modo estrito para identificar problemas no React
+  reactStrictMode: true,
   env: {
     DB_USER: process.env.DB_USER,
     DB_PASSWORD: process.env.DB_PASSWORD,
