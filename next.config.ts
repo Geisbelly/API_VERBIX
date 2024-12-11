@@ -28,6 +28,7 @@ const nextConfig = {
 
     ]
   },
+  mode: 'no-cors',
   trailingSlash: true,
 
 };
