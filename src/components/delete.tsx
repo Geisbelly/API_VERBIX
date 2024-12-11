@@ -1,6 +1,6 @@
 //OK
 const data = {
-  nome: 'Amanda'
+  nome: 'lioh'
 };
 
 // Função para fazer o DELETE para o endpoint
