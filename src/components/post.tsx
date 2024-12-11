@@ -3,7 +3,7 @@ const data = {
   nome: 'lioh',
   tipo:'Princesa',
   descricao: 'Descrição da nova conquista',
-  imgs: null
+  imgs: ["Personagens/lioh/imagem.png"]
 };
 
 // Função para fazer o POST para o endpoint
