@@ -1,16 +1,15 @@
 // OK
 const data = {
-  nome: 'Amanda',
-  tipo:'Princesa',
+  titulo: 'Teste',
   descricao: 'Descrição da nova conquista',
-  imgs: '[https:]'
+  meta: 10
 };
 
 // Função para fazer o POST para o endpoint
 async function postCharacter() {
   try {
     // Enviar a requisição POST
-    const response = await fetch('http://localhost:3000//api/personagens', {
+    const response = await fetch('https://api-verbix.vercel.app/api/conquistas', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', // Indica que estamos enviando dados em JSON
