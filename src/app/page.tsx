@@ -13,7 +13,11 @@ const ApiForm: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const url = "https://apiverbix.netlify.app/api";
-    const endpoint = `${url}/${dataType}`;
+    let endpoint = '';
+    if (dataType == 'chaves_keys_users_points'){
+      endpoint = `${url}/chaves_keys_users_points/acess`; 
+    } 
+    endpoint = `${url}/${dataType}`;
     console.log('start')
     console.log('formData:', formData); 
 
