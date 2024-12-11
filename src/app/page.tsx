@@ -70,6 +70,7 @@ const ApiForm: React.FC = () => {
       case "postagens":
         return (
           <>
+           <input type="date" name="dtcadastro" placeholder="Data de cadastro" onChange={handleInputChange} />
             <input name="title" placeholder="Título" onChange={handleInputChange} />
             <input name="content" placeholder="Conteúdo" onChange={handleInputChange} />
             <input name="author" placeholder="Autor" onChange={handleInputChange} />
