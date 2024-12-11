@@ -76,7 +76,7 @@ const ApiForm: React.FC = () => {
             <input name="author" placeholder="Autor" onChange={handleInputChange} />
           </>
         );
-      case "usuario":
+      case "users":
         return (
           <>
             <input name="username" placeholder="Username" onChange={handleInputChange} />
