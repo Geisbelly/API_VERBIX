@@ -98,7 +98,7 @@ export async function DELETE(req: Request) {
     }
 
     const result = await executeQuery(
-      `DELETE FROM CONQUISTAS WHERE ID = @id;`,
+      `DELETE FROM PERSONAGENS WHERE ID = @id;`,
       { nome }
     );
 
