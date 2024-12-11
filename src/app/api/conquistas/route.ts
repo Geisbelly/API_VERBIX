@@ -1,6 +1,13 @@
 import { NextResponse } from 'next/server';
 import { getDbConnection } from '../../../config/dbConfig';
 
+async function executeQuery(query: string, inputs = {}) {
+  const pool = await getDbConnection();
+  const request = pool.request();
+  Object.entries(inputs).forEach(([key, value]) => request.input(key, value));
+  return request.query(query);
+}
+
 // Função POST para criar uma nova conquista
 export async function POST(req: Request) {
   // Configuração de CORS
@@ -79,5 +86,29 @@ export async function GET() {
   } catch (error) {
     console.error('Erro ao buscar conquistas:', error);
     return NextResponse.json({ error: 'Erro ao buscar os dados das conquistas' }, { status: 500 });
+  }
+}
+
+export async function DELETE(req: Request) {
+  try {
+    const { nome } = await req.json();
+
+    if (!nome) {
+      return NextResponse.json({ error: 'O campo "id" é obrigatório' }, { status: 400 });
+    }
+
+    const result = await executeQuery(
+      `DELETE FROM CONQUISTAS WHERE ID = @id;`,
+      { nome }
+    );
+
+    if (result.rowsAffected[0] === 0) {
+      return NextResponse.json({ error: 'Conquista não encontrado' }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: 'Conquista excluído com sucesso' }, { status: 200 });
+  } catch (error) {
+    console.error('Erro ao excluir Conquista:', error);
+    return NextResponse.json({ error: 'Erro ao excluir Conquista' }, { status: 500 });
   }
 }
